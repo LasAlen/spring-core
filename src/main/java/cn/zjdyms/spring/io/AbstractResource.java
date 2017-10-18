@@ -49,33 +49,52 @@ public abstract class AbstractResource implements Resource{
 	}
 
 	public File getFile() throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		throw new FileNotFoundException(getDescription() + " resolved to absolute file path");
 	}
 
 	public long getContentLength() throws IOException {
-		// TODO Auto-generated method stub
-		return 0;
+		InputStream is = getInputStream();
+		if (is == null ) {
+			throw new IOException(getDescription() + " cannot find resource");
+		}
+		try {
+			long count = 0;
+			int length = 0;
+			byte[] content = new byte[1024];
+			while((length = is.read(content)) != -1) {
+				count += length;
+			}
+			return count;
+		} finally {
+			try {
+				is.close();
+			} catch (Exception e) {
+			}
+		}
+		
 	}
 
-	public long getLastModfied() {
-		// TODO Auto-generated method stub
-		return 0;
+	public long getLastModfied() throws IOException{
+		//spring实现交给了一个新方法处理,原因?
+		return getFile().lastModified();
 	}
 
 	public Resource createRelationResource(String relateName) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		throw new FileNotFoundException("Cannot create a relative resource for " + getDescription());
 	}
 
 	public String getFileName() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
+	@Override
+	public String toString() {
+		return getDescription();
 	}
+	
+	
 
+	
 }

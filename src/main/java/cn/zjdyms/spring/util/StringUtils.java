@@ -32,7 +32,6 @@ public class StringUtils {
 		StringBuilder sb = new StringBuilder();
 		int pos = 0;
 		int index = str.indexOf(oldPattern);
-		int length = str.length();
 		int pLength = oldPattern.length();
 		while(index > 0) {
 			sb.append(str.substring(pos, index));
@@ -43,5 +42,9 @@ public class StringUtils {
 		sb.append(str.substring(pos));
 		
 		return sb.toString();
+	}
+	
+	public static String cleanPath(String str) {
+		return null;
 	}
 }

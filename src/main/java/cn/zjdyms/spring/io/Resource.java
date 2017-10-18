@@ -66,7 +66,7 @@ public interface Resource extends InputStreamSource{
 	 * 获取资源上一次修改的时间
 	 * @return
 	 */
-	long getLastModfied();
+	long getLastModfied() throws IOException;
 	//创建一个相关文件
 	
 	/**
