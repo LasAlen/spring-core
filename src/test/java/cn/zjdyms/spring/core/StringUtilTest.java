@@ -23,4 +23,10 @@ public class StringUtilTest
     	Date date1 = new Date(); 
     	System.out.println(date1.getTime() - date.getTime());
 	}
+    
+    @Test
+    public void test() {
+    	String str =StringUtils.cleanPath("file:aa/../../dd/");
+    	System.out.println(str);
+    }
 }
