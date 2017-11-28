@@ -13,6 +13,12 @@ public class StringUtils {
 	
 	private static final String PARENT = "..";
 	
+	public static boolean isEmpty(Object str) {
+		return str == null || "".equals(str);
+	}
+	
+	
+	
 	public static boolean hasLength(String str) {
 		return str != null && str.length() > 0;
 	}
@@ -30,6 +36,23 @@ public class StringUtils {
 		
 		return false;
 	}
+	
+	public static boolean containWhitespace(String str) {
+		if (str == null) {
+			return false;
+		}
+		
+		int length = str.length();
+		for (int i = 0; i < length; i++) {
+			if (Character.isWhitespace(str.charAt(i))) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	
 	
 	public static String replaceAll(String str, String pattern, String newPattern) {
 		
